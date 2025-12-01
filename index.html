@@ -98,7 +98,7 @@
                 </div>
                 <div class="project-card">
                     <div class="project-media">
-                        <img src="images/MusicPracticeLab.jpg" alt="楽器練習用アプリ" class="project-image-el">
+                        <img src="images/MusicPracticeLab.jpg" alt="楽器練習用アプリ" class="project-image-el" data-gallery="music-app" data-gallery-images="images/MusicPracticeLab.jpg,images/MusicPracticeLab2.jpg">
                     </div>
                     <h3>楽器練習アプリ</h3>
                     <p>チューナー、メトロノーム、録音録画、練習動画再生機能を統合した楽器練習アプリ。これ一つで楽器の練習に必要な全ての機能を提供します。</p>
@@ -122,7 +122,7 @@
                 </div>
                 <div class="project-card">
                     <div class="project-media">
-                        <img src="images/seo-tool.jpg" alt="SEOキーワードリサーチツール" class="project-image-el">
+                        <img src="images/seo-keywords.png" alt="SEOキーワードリサーチツール" class="project-image-el">
                     </div>
                     <h3>SEOキーワードリサーチツール</h3>
                     <p>Google Suggest APIとGoogle Ads APIを活用し、24時間体制でキーワードの検索ボリュームと上位記事を分析。独自アルゴリズムで検索ニーズとの適合度を自動判定します。</p>
@@ -134,6 +134,14 @@
                 </div>
             </div>
         </section>
+    </div>
+
+    <!-- 画像オーバーレイ -->
+    <div id="imageOverlay" class="image-overlay">
+        <span class="overlay-close">&times;</span>
+        <div class="overlay-images-container">
+            <img class="overlay-content" id="overlayImg">
+        </div>
     </div>
 
     <script src="script.js"></script>

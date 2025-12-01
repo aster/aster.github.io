@@ -158,3 +158,74 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+// 画像オーバーレイ機能
+document.addEventListener('DOMContentLoaded', function() {
+    const overlay = document.getElementById('imageOverlay');
+    const overlayContainer = document.querySelector('.overlay-images-container');
+    const closeBtn = document.querySelector('.overlay-close');
+
+    // 全ての画像にクリックイベントを追加（iframeは除外）
+    document.querySelectorAll('.project-media img').forEach(img => {
+        img.addEventListener('click', function(e) {
+            e.stopPropagation();
+            overlay.classList.add('active');
+
+            // コンテナをクリア
+            overlayContainer.innerHTML = '';
+
+            // ギャラリー画像がある場合
+            const galleryImages = this.dataset.galleryImages;
+            if (galleryImages) {
+                const images = galleryImages.split(',');
+                overlayContainer.classList.add('multiple');
+
+                images.forEach(imgSrc => {
+                    const imgElement = document.createElement('img');
+                    imgElement.src = imgSrc.trim();
+                    imgElement.alt = this.alt;
+                    imgElement.className = 'overlay-content';
+                    overlayContainer.appendChild(imgElement);
+                });
+            } else {
+                // 単一画像
+                overlayContainer.classList.remove('multiple');
+                const imgElement = document.createElement('img');
+                imgElement.src = this.src;
+                imgElement.alt = this.alt;
+                imgElement.className = 'overlay-content';
+                imgElement.id = 'overlayImg';
+                overlayContainer.appendChild(imgElement);
+            }
+
+            document.body.style.overflow = 'hidden'; // スクロール無効化
+        });
+    });
+
+    // オーバーレイを閉じる
+    function closeOverlay() {
+        overlay.classList.remove('active');
+        overlayContainer.classList.remove('multiple');
+        document.body.style.overflow = ''; // スクロール有効化
+    }
+
+    // 閉じるボタン
+    closeBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        closeOverlay();
+    });
+
+    // オーバーレイ背景クリックで閉じる
+    overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) {
+            closeOverlay();
+        }
+    });
+
+    // ESCキーで閉じる
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && overlay.classList.contains('active')) {
+            closeOverlay();
+        }
+    });
+});
