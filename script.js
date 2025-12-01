@@ -1,6 +1,20 @@
 // ポートフォリオサイト - ミニマリストデザイン
 
 document.addEventListener('DOMContentLoaded', function() {
+    // View Projectsボタンのスクロール機能
+    const viewProjectsBtn = document.getElementById('viewProjectsBtn');
+    if (viewProjectsBtn) {
+        viewProjectsBtn.addEventListener('click', function() {
+            const projectsSection = document.getElementById('projects');
+            if (projectsSection) {
+                projectsSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    }
+
     // スムーススクロール
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
