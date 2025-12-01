@@ -40,6 +40,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         card.addEventListener('mousemove', function(e) {
+            // 画像エリアの場合はホバーエフェクトをスキップ
+            if (e.target.closest('.project-media img')) {
+                return;
+            }
+
             const rect = this.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
@@ -168,7 +173,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // 全ての画像にクリックイベントを追加（iframeは除外）
     document.querySelectorAll('.project-media img').forEach(img => {
         img.addEventListener('click', function(e) {
+            e.preventDefault();
             e.stopPropagation();
+            console.log('Image clicked:', this.src); // デバッグ用
             overlay.classList.add('active');
 
             // コンテナをクリア

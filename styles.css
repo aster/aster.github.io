@@ -509,7 +509,8 @@ button {
     }
 }
 
-/* 画像にカーソルポインターを追加 */
+/* 画像にカーソルポインターとz-indexを追加 */
 .project-media img {
     cursor: pointer;
+    z-index: 10;
 }
