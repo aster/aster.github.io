@@ -347,10 +347,41 @@ button {
 }
 
 .project-card p {
-    padding: 0 1.5rem 1rem;
+    padding: 0 1.5rem 0.5rem;
     color: rgba(255, 255, 255, 0.7);
     font-size: 0.95rem;
     line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.project-card p.expanded {
+    -webkit-line-clamp: unset;
+    max-height: none;
+}
+
+.read-more-btn {
+    background: none;
+    border: none;
+    color: #00f5ff;
+    font-size: 0.85rem;
+    cursor: pointer;
+    padding: 0 1.5rem 0.5rem;
+    text-align: left;
+    display: block;
+    transition: color 0.3s ease;
+    font-weight: 500;
+}
+
+.read-more-btn:hover {
+    color: #00ff88;
+}
+
+.read-more-btn.hidden {
+    display: none;
 }
 
 .tags {

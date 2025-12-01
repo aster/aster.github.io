@@ -54,8 +54,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         card.addEventListener('mousemove', function(e) {
-            // 画像エリアの場合はホバーエフェクトをスキップ
-            if (e.target.closest('.project-media img')) {
+            // メディアエリア、テキストエリア（h3, p）、タグエリア、ボタンの場合はホバーエフェクトをスキップ
+            if (e.target.closest('.project-media') ||
+                e.target.closest('h3') ||
+                e.target.closest('p') ||
+                e.target.closest('.tags') ||
+                e.target.closest('.read-more-btn')) {
+                this.style.transform = 'translateY(-10px) rotateX(0) rotateY(0)';
                 return;
             }
 
@@ -150,6 +155,38 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 250);
 
     window.addEventListener('resize', handleResize);
+
+    // もっと見る機能
+    document.querySelectorAll('.project-card').forEach(card => {
+        const description = card.querySelector('p');
+        const readMoreBtn = card.querySelector('.read-more-btn');
+
+        if (description && readMoreBtn) {
+            // 説明文が3行を超えているかチェック
+            const lineHeight = parseFloat(getComputedStyle(description).lineHeight);
+            const maxHeight = lineHeight * 3;
+
+            // 初期状態で高さをチェック（少し遅延させて正確な高さを取得）
+            setTimeout(() => {
+                if (description.scrollHeight > maxHeight + 5) {
+                    readMoreBtn.classList.remove('hidden');
+                }
+            }, 100);
+
+            // ボタンクリックイベント
+            readMoreBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+
+                if (description.classList.contains('expanded')) {
+                    description.classList.remove('expanded');
+                    this.textContent = 'もっと見る';
+                } else {
+                    description.classList.add('expanded');
+                    this.textContent = '閉じる';
+                }
+            });
+        }
+    });
 });
 
 // CSS用のリップルスタイルを動的に追加

@@ -40,11 +40,13 @@
                         <iframe src="https://drive.google.com/file/d/16Lhjg8V58b9ObPHAEzAtdRLw-uy5pYZq/preview" allow="autoplay" allowfullscreen></iframe>
                     </div>
                     <h3>音声メモプリンター</h3>
-                    <p>レシート用プリンターを駆動するAPIを作成し、音声によりメモを印刷する装置。音声認識で入力したテキストを即座に印刷できます。</p>
+                    <p>Raspberry Pi上でESC/POSコマンドによりサーマルプリンターを制御するAPIを開発。音声認識で入力したテキストを即座にレシート用紙に印刷し、物理的なメモとして残せます。python-escposライブラリを活用した印刷制御システム。</p>
+                    <button class="read-more-btn hidden">もっと見る</button>
                     <div class="tags">
                         <span>Raspberry Pi</span>
                         <span>Python</span>
-                        <span>Speech API</span>
+                        <span>ESC/POS</span>
+                        <span>音声認識</span>
                     </div>
                 </div>
                 <div class="project-card">
@@ -52,11 +54,13 @@
                         <iframe src="https://drive.google.com/file/d/1KcYuv1-kveJDQ4F23ScpkNrmTY8sigSv/preview" allow="autoplay" allowfullscreen></iframe>
                     </div>
                     <h3>音声検知スマート照明</h3>
-                    <p>特定の音のみを機械学習で検知して自室の照明を操作する装置。手を叩く音など、カスタマイズ可能な音で照明をコントロールできます。</p>
+                    <p>指パッチン音を高精度で検知して照明を操作するIoTデバイス。マイクで常時音量を監視し、閾値を超えた音をFFT（高速フーリエ変換）で周波数解析、SVM（サポートベクターマシン）で特定の音のみを判別。誤検知を防ぐ機械学習による音響認識システム。</p>
+                    <button class="read-more-btn hidden">もっと見る</button>
                     <div class="tags">
-                        <span>機械学習</span>
-                        <span>TensorFlow</span>
-                        <span>IoT</span>
+                        <span>Python</span>
+                        <span>SVM</span>
+                        <span>FFT</span>
+                        <span>音響認識</span>
                     </div>
                 </div>
                 <div class="project-card">
@@ -64,11 +68,13 @@
                         <iframe src="https://drive.google.com/file/d/1jVY6gO31LaO9YbTUH7sZCvBTHUFP-7IL/preview" allow="autoplay" allowfullscreen></iframe>
                     </div>
                     <h3>音ゲー自動演奏装置</h3>
-                    <p>スマートフォン向け音楽ゲームを自動で演奏する装置。画像認識とタイミング制御により、高精度な自動プレイを実現しています。</p>
+                    <p>スマートフォン向け音楽ゲームを自動演奏する装置。OpenCVで画面のノーツを認識し、Arduinoでタイミング制御。3Dプリンタで筐体を作成し、ネオジム磁石を使った自作ソレノイドで物理的にタップ。画像認識と精密な機械制御を組み合わせた高精度自動プレイシステム。</p>
+                    <button class="read-more-btn hidden">もっと見る</button>
                     <div class="tags">
                         <span>OpenCV</span>
                         <span>Arduino</span>
-                        <span>画像認識</span>
+                        <span>3Dプリンタ</span>
+                        <span>ソレノイド</span>
                     </div>
                 </div>
                 <div class="project-card">
@@ -76,11 +82,13 @@
                         <iframe src="https://drive.google.com/file/d/1t0Gbl20TYPkwUIdiAvo27ypclLJBVySv/preview" allow="autoplay" allowfullscreen></iframe>
                     </div>
                     <h3>スマート環境測定装置</h3>
-                    <p>温度、湿度、CO2濃度を測定して加湿器の制御や、換気の通知をLAN経由で行う装置。快適な室内環境を自動で維持します。</p>
+                    <p>リモートワーク環境の改善を目指して開発した環境監視システム。ESP32で温度・湿度・CO2濃度をリアルタイム測定し、LAN経由で通信。CO2濃度が高まると換気を通知し、湿度に応じて加湿器を自動制御。長時間のデスクワークでも快適な作業環境を維持します。</p>
+                    <button class="read-more-btn hidden">もっと見る</button>
                     <div class="tags">
                         <span>ESP32</span>
+                        <span>IoT</span>
                         <span>センサー</span>
-                        <span>MQTT</span>
+                        <span>自動制御</span>
                     </div>
                 </div>
                 <div class="project-card">
@@ -88,11 +96,13 @@
                         <iframe src="https://drive.google.com/file/d/1M1ntm_N-mfws35-rm2_PYk4GdYwFP6t_/preview" allow="autoplay" allowfullscreen></iframe>
                     </div>
                     <h3>旅行記録SNSアプリ</h3>
-                    <p>旅行の記録をルート情報やメモ、写真で記録し共有できるSNSアプリケーション。プロトタイプ開発により企画の積極性が評価されました。</p>
+                    <p>旅行の記録をルート情報、写真、メモで残せるSNSアプリ。Google Maps APIでリアルタイム位置追跡し、Kalmanフィルタで位置精度を向上。訪れた場所に写真とメモをピン留めし、移動ルートをポリラインで可視化。旅の思い出を地図と共に振り返れます。</p>
+                    <button class="read-more-btn hidden">もっと見る</button>
                     <div class="tags">
-                        <span>React Native</span>
-                        <span>Firebase</span>
+                        <span>Kotlin</span>
                         <span>Google Maps API</span>
+                        <span>Kalmanフィルタ</span>
+                        <span>位置情報</span>
                     </div>
                 </div>
                 <div class="project-card">
@@ -100,23 +110,40 @@
                         <img src="images/MusicPracticeLab.jpg" alt="楽器練習用アプリ" class="project-image-el" data-gallery="music-app" data-gallery-images="images/MusicPracticeLab.jpg,images/MusicPracticeLab2.jpg">
                     </div>
                     <h3>楽器練習アプリ</h3>
-                    <p>チューナー、メトロノーム、録音録画、練習動画再生機能を統合した楽器練習アプリ。これ一つで楽器の練習に必要な全ての機能を提供します。</p>
+                    <p>YIN法による高精度チューナー、5種類のサウンドパターン対応メトロノーム、録音録画、練習動画再生機能を統合したAndroidアプリ。Jetpack ComposeとMaterial3でモダンなUIを実現し、MVVM + 単一方向データフローによる保守性の高いアーキテクチャを採用。AudioRecordとSoundPoolでリアルタイム音声処理を実装。</p>
+                    <button class="read-more-btn hidden">もっと見る</button>
                     <div class="tags">
-                        <span>React Native</span>
-                        <span>Audio Processing</span>
-                        <span>Video Player</span>
+                        <span>Kotlin</span>
+                        <span>Jetpack Compose</span>
+                        <span>YIN法</span>
+                        <span>AudioRecord</span>
                     </div>
                 </div>
                 <div class="project-card">
                     <div class="project-media">
-                        <img src="images/wifi-repeater.jpg" alt="無線LAN中継機" class="project-image-el">
+                        <iframe src="https://drive.google.com/file/d/1lrbLJj3serGfKyMKYUTpgWyyLs86qchl/preview" allow="autoplay" allowfullscreen></iframe>
                     </div>
-                    <h3>無線LAN中継機</h3>
-                    <p>Raspberry Piとルーターを活用した無線LAN中継機（イーサネットコンバータ）。有線機器を無線化し、ネットワークの柔軟性を向上させます。</p>
+                    <h3>知能ロボットコンテスト優勝</h3>
+                    <p>完全自律型ロボットによる競技大会で優勝。通信なしで複数ロボットを協調させるユニークな手法と、高精度な3本爪キャッチ機構を実装。RXマイコンをC言語で制御し、センサー情報から自律判断を行います。</p>
+                    <button class="read-more-btn hidden">もっと見る</button>
+                    <div class="tags">
+                        <span>RXマイコン</span>
+                        <span>C言語</span>
+                        <span>自律制御</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-media">
+                        <img src="images/yaki1.jpg" alt="焼き芋温度制御装置" class="project-image-el" data-gallery="sweet-potato" data-gallery-images="images/yaki1.jpg,images/yaki2.jpg">
+                    </div>
+                    <h3>焼き芋温度制御装置</h3>
+                    <p>美味しい焼き芋を作るための温度自動制御システム。DS18B20温度センサーで水温を監視し、TP-Link Tapoスマートプラグを介してホットプレートをON/OFF制御。85℃で1時間保温という最適な調理温度を自動維持します。Raspberry Piで1時間の調理を完全自動化。</p>
+                    <button class="read-more-btn hidden">もっと見る</button>
                     <div class="tags">
                         <span>Raspberry Pi</span>
-                        <span>Linux</span>
-                        <span>ネットワーク</span>
+                        <span>Python</span>
+                        <span>DS18B20</span>
+                        <span>IoT</span>
                     </div>
                 </div>
                 <div class="project-card">
@@ -124,11 +151,13 @@
                         <img src="images/seo-keywords.png" alt="SEOキーワードリサーチツール" class="project-image-el">
                     </div>
                     <h3>SEOキーワードリサーチツール</h3>
-                    <p>Google Suggest APIとGoogle Ads APIを活用し、24時間体制でキーワードの検索ボリュームと上位記事を分析。独自アルゴリズムで検索ニーズとの適合度を自動判定します。</p>
+                    <p>Google Ads APIを活用した24時間稼働のキーワード分析システム。検索ボリュームの大きいキーワードから関連ワードを自動生成し、データベースに蓄積。cronによる定期実行で最新データを取得し続け、検索ニーズの高いキーワードを発見します。</p>
+                    <button class="read-more-btn hidden">もっと見る</button>
                     <div class="tags">
                         <span>Python</span>
                         <span>Google Ads API</span>
-                        <span>Selenium</span>
+                        <span>MySQL</span>
+                        <span>Shell Script</span>
                     </div>
                 </div>
             </div>
