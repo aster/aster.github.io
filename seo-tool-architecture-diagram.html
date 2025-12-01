@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEOツール - アーキテクチャ図</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        h2 {
+            color: #555;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #4caf50;
+            padding-bottom: 10px;
+        }
+        .mermaid {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        .description {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+            border-left: 4px solid #4caf50;
+        }
+        .description h3 {
+            margin-top: 0;
+            color: #4caf50;
+        }
+        .description ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SEOキーワードリサーチツール</h1>
+        <p style="text-align: center; color: #666; margin-bottom: 40px;">システムアーキテクチャ図</p>
+
+        <h2>📐 システム構成図</h2>
+        <div class="mermaid">
+graph LR
+    %% スタイル定義
+    classDef user fill:#e8f5e9,stroke:#4caf50,stroke-width:3px,color:#000
+    classDef storage fill:#fff3e0,stroke:#ff9800,stroke-width:3px,color:#000
+    classDef scheduler fill:#e1f5fe,stroke:#03a9f4,stroke-width:3px,color:#000
+    classDef worker fill:#f3e5f5,stroke:#9c27b0,stroke-width:2px,color:#000
+    classDef api fill:#ffebee,stroke:#f44336,stroke-width:2px,stroke-dasharray: 5 5,color:#000
+
+    %% ユーザー層
+    User([👤 管理者<br/>キーワード登録]):::user
+
+    %% データベース層
+    DB[(🗄️ データベース<br/>━━━━━━━━<br/>・キーワード<br/>・検索ボリューム<br/>・記事タイトル<br/>・判定スコア)]:::storage
+
+    %% スケジューラー層
+    Scheduler{⏱️ スケジューラー<br/>━━━━━━━━<br/>定期実行<br/>タスク割り当て}:::scheduler
+
+    %% ワーカー層
+    W1[📝 ワーカー1<br/>キーワード拡張]:::worker
+    W2[📊 ワーカー2<br/>ボリューム取得]:::worker
+    W3[🔍 ワーカー3<br/>スクレイピング<br/>& ニーズ判定]:::worker
+
+    %% 外部API層
+    API1[Google<br/>Suggest API]:::api
+    API2[Google<br/>Ads API]:::api
+    API3[Google<br/>Search]:::api
+
+    %% 接続
+    User -->|初期登録| DB
+    DB <-->|状態確認<br/>タスク取得| Scheduler
+
+    Scheduler -->|①新規ワード| W1
+    Scheduler -->|②ボリューム未取得| W2
+    Scheduler -->|③検索需要あり| W3
+
+    W1 <-->|関連語取得| API1
+    W2 <-->|検索数取得| API2
+    W3 <-->|上位10記事タイトル| API3
+
+    W1 -->|保存| DB
+    W2 -->|保存| DB
+    W3 -->|記事タイトル<br/>& 判定スコア保存| DB
+        </div>
+
+        <div class="description">
+            <h3>システム概要</h3>
+            <ul>
+                <li><strong>管理者</strong>: サイト関連キーワードを初期登録</li>
+                <li><strong>データベース</strong>: キーワード、検索ボリューム、記事タイトル、判定スコアを保存</li>
+                <li><strong>スケジューラー</strong>: 24時間体制で未処理タスクを検出し、適切なワーカーに割り当て</li>
+                <li><strong>ワーカー群</strong>: 並行処理でキーワード拡張、ボリューム取得、スクレイピング & 判定を実行</li>
+                <li><strong>外部API</strong>: Google Suggest、Google Ads、Google Searchを利用</li>
+            </ul>
+        </div>
+
+        <h2>🔄 処理フロー詳細</h2>
+        <div class="mermaid">
+graph TD
+    %% スタイル定義
+    classDef step1 fill:#e8f5e9,stroke:#4caf50,stroke-width:2px
+    classDef step2 fill:#e3f2fd,stroke:#2196f3,stroke-width:2px
+    classDef step3 fill:#fff3e0,stroke:#ff9800,stroke-width:2px
+
+    Start([開始]):::step1
+    Start --> Step1[① キーワード拡張<br/>━━━━━━━━<br/>Google Suggest API<br/>新規関連語を取得]:::step1
+
+    Step1 --> Step2[② ボリューム取得<br/>━━━━━━━━<br/>Google Ads API<br/>検索数を取得]:::step2
+
+    Step2 --> Check{検索需要<br/>あり？}
+    Check -->|No| End1([保存して終了])
+    Check -->|Yes| Step3[③ スクレイピング & 判定<br/>━━━━━━━━<br/>Selenium<br/>上位10記事タイトル取得<br/>+<br/>独自アルゴリズム<br/>検索ニーズ適合度判定]:::step3
+
+    Step3 --> End2([タイトル & スコア保存])
+
+    style Check fill:#ffebee,stroke:#f44336,stroke-width:2px
+        </div>
+
+        <div class="description">
+            <h3>処理ステップ</h3>
+            <ul>
+                <li><strong>ステップ①</strong>: Google Suggest APIで関連キーワードを自動取得</li>
+                <li><strong>ステップ②</strong>: Google Ads APIで検索ボリュームと関連キーワードを取得</li>
+                <li><strong>分岐判定</strong>: 検索需要がある場合のみ次のステップへ</li>
+                <li><strong>ステップ③</strong>: Seleniumで上位10記事のタイトルを取得し、独自アルゴリズムで検索ニーズとの適合度を判定</li>
+                <li><strong>保存</strong>: 記事タイトルと判定スコアをデータベースに保存</li>
+            </ul>
+        </div>
+
+        <div class="description" style="border-left-color: #03a9f4;">
+            <h3 style="color: #03a9f4;">💡 システムの特徴</h3>
+            <ul>
+                <li><strong>並行処理</strong>: 3つのワーカーが同時に異なるタスクを実行</li>
+                <li><strong>タスクキュー</strong>: データベースが処理待ちタスクを管理</li>
+                <li><strong>状態管理</strong>: 各キーワードの処理状態をトラッキング</li>
+                <li><strong>24時間稼働</strong>: スケジューラーが継続的に実行</li>
+                <li><strong>スケーラブル</strong>: ワーカー数を増やして処理速度向上可能</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            themeVariables: {
+                fontSize: '16px'
+            }
+        });
+    </script>
+</body>
+</html>
