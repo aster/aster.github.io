@@ -1,0 +1,389 @@
+/* ===== リセット & 基本スタイル ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    font-family: inherit;
+}
+
+/* ===== ミニマリスト・モダンパターン ===== */
+.minimalist-portfolio {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+    color: #fff;
+    min-height: 100vh;
+}
+
+/* ナビゲーション */
+.minimal-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 5%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    background: linear-gradient(90deg, #00f5ff, #00ff88);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.nav-links {
+    display: flex;
+    gap: 3rem;
+}
+
+.nav-links a {
+    position: relative;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #00f5ff, #00ff88);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #00f5ff;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* ヒーローセクション */
+.hero-minimal {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 5%;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-minimal::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(circle at 20% 50%, rgba(0, 245, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(0, 255, 136, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.glitch {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    position: relative;
+    letter-spacing: 5px;
+    animation: glitch 3s infinite;
+}
+
+@keyframes glitch {
+    0% {
+        text-shadow:
+            2px 2px 0 #00f5ff,
+            -2px -2px 0 #ff00de;
+    }
+    25% {
+        text-shadow:
+            -2px 2px 0 #00f5ff,
+            2px -2px 0 #ff00de;
+    }
+    50% {
+        text-shadow:
+            2px -2px 0 #00f5ff,
+            -2px 2px 0 #ff00de;
+    }
+    75% {
+        text-shadow:
+            -2px -2px 0 #00f5ff,
+            2px 2px 0 #ff00de;
+    }
+    100% {
+        text-shadow:
+            2px 2px 0 #00f5ff,
+            -2px -2px 0 #ff00de;
+    }
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 1px;
+}
+
+.cta-buttons {
+    margin-top: 3rem;
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.btn-primary,
+.btn-secondary {
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary {
+    background: linear-gradient(90deg, #00f5ff, #00ff88);
+    color: #000;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 245, 255, 0.3);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #fff;
+    border: 2px solid #00f5ff;
+}
+
+.btn-secondary:hover {
+    background: rgba(0, 245, 255, 0.1);
+    transform: translateY(-3px);
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+}
+
+.scroll-line {
+    width: 2px;
+    height: 50px;
+    background: linear-gradient(to bottom, #00f5ff, transparent);
+    animation: scroll-down 2s infinite;
+}
+
+@keyframes scroll-down {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+}
+
+/* プロジェクトセクション */
+.projects-minimal {
+    padding: 5rem 5%;
+    background: #0a0a0a;
+}
+
+.projects-minimal h2 {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 4rem;
+    background: linear-gradient(90deg, #00f5ff, #00ff88);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.project-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(0, 245, 255, 0.2);
+    border-color: #00f5ff;
+}
+
+.project-media {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    position: relative;
+    background: #000;
+}
+
+.project-media iframe,
+.project-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: none;
+}
+
+.project-card h3 {
+    padding: 1.5rem 1.5rem 0.5rem;
+    font-size: 1.5rem;
+    color: #00f5ff;
+}
+
+.project-card p {
+    padding: 0 1.5rem 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.tags {
+    padding: 0 1.5rem 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tags span {
+    padding: 0.4rem 1rem;
+    background: rgba(0, 245, 255, 0.1);
+    border: 1px solid rgba(0, 245, 255, 0.3);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: #00ff88;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+    .minimal-nav {
+        padding: 1.5rem 5%;
+    }
+
+    .nav-links {
+        gap: 1.5rem;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    .glitch {
+        font-size: 2.5rem;
+        letter-spacing: 2px;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        padding: 0.8rem 2rem;
+        font-size: 0.9rem;
+    }
+
+    .projects-minimal {
+        padding: 3rem 5%;
+    }
+
+    .projects-minimal h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .project-media {
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-links {
+        gap: 1rem;
+        font-size: 0.9rem;
+    }
+
+    .glitch {
+        font-size: 2rem;
+    }
+
+    .projects-minimal h2 {
+        font-size: 1.5rem;
+    }
+}
